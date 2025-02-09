@@ -10,6 +10,9 @@ def load_data():
     return hour_data, day_data
 hour_data, day_data = load_data()
 
+season_mapping = {1: "Spring / Musim Semi", 2: "Summer / Musim Panas", 3: "Fall / Musim Gugur", 4: "Winter / Musim Dingin"}
+day_data['season'] = day_data['season'].map(season_mapping)
+hour_data['season'] = hour_data['season'].map(season_mapping)
 st.title("Analisis Data Bike Sharing")
 st.sidebar.header("Filter Data")
 selected_season = st.sidebar.selectbox("Pilih Musim", day_data['season'].unique())
